@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="5" author="Mathias Clement">
+        <createTable tableName="wedstrijd" schemaName="esports">
+            <column name="id" type="SERIAL" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="tijdstip" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="scoreTeamA" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="scoreTeamB" type="int">
+                <constraints nullable="true"/>
+            </column>
+
+        </createTable>
+        <createTable tableName="team_wedstrijd" schemaName="esports">
+            <column name="team_id" type="bigint">
+            </column>
+            <column name="wedstrijd_id" type="bigint">
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="team_wedstrijd"
+                                 baseTableSchemaName="esports"
+                                 baseColumnNames="team_id"
+                                 constraintName="fk_team"
+                                 referencedTableName="team"
+                                 referencedColumnNames="id"
+                                 referencedTableSchemaName="esports"
+        />
+        <addForeignKeyConstraint baseTableName="team_wedstrijd"
+                                 baseTableSchemaName="esports"
+                                 baseColumnNames="wedstrijd_id"
+                                 constraintName="fk_wedstrijd"
+                                 referencedTableName="wedstrijd"
+                                 referencedColumnNames="id"
+                                 referencedTableSchemaName="esports"
+        />
+    </changeSet>
+
+</databaseChangeLog>

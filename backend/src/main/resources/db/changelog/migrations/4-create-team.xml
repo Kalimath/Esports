@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="4" author="Mathias Clement">
+        <createTable tableName="team" schemaName="esports">
+            <column name="id" type="SERIAL" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="naam" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="speler_team" schemaName="esports">
+            <column name="speler_id" type="bigint">
+            </column>
+            <column name="team_id" type="bigint">
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="speler_team"
+                                 baseTableSchemaName="esports"
+                                 baseColumnNames="speler_id"
+                                 constraintName="fk_speler"
+                                 referencedTableName="speler"
+                                 referencedColumnNames="id"
+                                 referencedTableSchemaName="esports"
+        />
+        <addForeignKeyConstraint baseTableName="speler_team"
+                                 baseTableSchemaName="esports"
+                                 baseColumnNames="team_id"
+                                 constraintName="fk_team"
+                                 referencedTableName="team"
+                                 referencedColumnNames="id"
+                                 referencedTableSchemaName="esports"
+        />
+    </changeSet>
+</databaseChangeLog>

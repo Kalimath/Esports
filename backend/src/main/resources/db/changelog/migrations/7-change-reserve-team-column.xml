@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="7" author="Jonas Boon">
+        <addColumn tableName="speler_team" schemaName="esports">
+            <column name="speler_id_reserve" type="bigint">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+        <addForeignKeyConstraint baseTableName="speler_team"
+                                 baseColumnNames="speler_id_reserve"
+                                 baseTableSchemaName="esports"
+                                 constraintName="fk_reservespeler_id"
+                                 referencedTableName="speler"
+                                 referencedColumnNames="id"
+                                 referencedTableSchemaName="esports"
+        />
+    </changeSet>
+
+</databaseChangeLog>

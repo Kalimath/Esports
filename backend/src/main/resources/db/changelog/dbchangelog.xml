@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <include file="db/changelog/migrations/1-create-schema.xml"/>
+    <include file="db/changelog/migrations/2-create-speler.xml"/>
+    <include file="db/changelog/migrations/3-create-adres.xml"/>
+    <include file="db/changelog/migrations/4-create-team.xml"/>
+    <include file="db/changelog/migrations/5-create-wedstrijd.xml"/>
+    <include file="db/changelog/migrations/6-change-isReserve-column-name.xml"/>
+    <include file="db/changelog/migrations/7-change-reserve-team-column.xml"/>
+    <include file="db/changelog/migrations/8-change-reserveteam-bool-column.xml"/>
+    <include file="db/changelog/migrations/9-change-reserveteam-id.xml"/>
+    <include file="db/changelog/migrations/10-change-wedstrijd.xml"/>
+    <include file="db/changelog/migrations/11-change-team-wedstrijd-score.xml"/>
+    <include file="db/changelog/migrations/12-create-PersoonlijkeMatchHistoriek.xml"/>
+    <include file="db/changelog/migrations/13-set-primaryKey-persoonlijkeMatchHistoriek.xml"/>
+    <include file="db/changelog/migrations/14-create-manager.xml"/>
+    <include file="db/changelog/migrations/15-add-fk-key-team-manager.xml"/>
+    <include file="db/changelog/migrations/16-speler-user.xml"/>
+
+    <include file="db/changelog/migrations/18-drop-teamscore.xml"/>
+</databaseChangeLog>

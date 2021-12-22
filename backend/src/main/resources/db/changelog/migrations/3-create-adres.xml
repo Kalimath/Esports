@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="3" author="Mathias Clement">
+        <createTable tableName="adres" schemaName="esports">
+            <column name="id" type="SERIAL" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="straat" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="huisnr" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="postcode" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="gemeente" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addColumn tableName="speler" schemaName="esports">
+            <column name="adres_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+        <addForeignKeyConstraint constraintName="fk_speler_adres"
+                                 baseTableName="speler"
+                                 baseTableSchemaName="esports"
+                                 baseColumnNames="adres_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="adres"
+                                 referencedTableSchemaName="esports"
+        />
+    </changeSet>
+
+</databaseChangeLog>
